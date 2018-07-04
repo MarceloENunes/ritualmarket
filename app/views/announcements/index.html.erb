@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Announcements</h1>
+
+<table>
+
+
+  <tbody>
+  <table class="table">
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Views number</th>
+    </tr>
+
+    <% Announcement.all.each do |announcement| %>
+      <% if announcement.user == current_user %>
+
+
+      <tr>
+        <td><%= announcement.title %></td>
+        <td><%= announcement.description %></td>
+        <td><%= announcement.price %></td>
+        <td><%= announcement.viewn %></td>
+        <td><%= link_to 'Show', announcement %></td>
+        <td><%= link_to 'Edit', edit_announcement_path(announcement) %></td>
+        <td><%= link_to 'Destroy', announcement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+
+      <%end%>
+    <% end %>
+  </table>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Announcement', new_announcement_path %>
